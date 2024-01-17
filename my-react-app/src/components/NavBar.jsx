@@ -1,11 +1,16 @@
-function NavBar(props) {
-    let { functionMore, functionLess } = props
+function NavBar({ pokemons, onPokemonClick }) {
+    
     return (
         <div>
-            <button onClick={functionLess} > Previous </button>
-            <button onClick={functionMore}> Next </button>
+            {pokemons.map((pokemon) => (
+                <button key={pokemon.name} onClick={() => {
+                    onPokemonClick(pokemon)
+                }}>
+                    {pokemon.name}
+                </button>
+            ))}
         </div>
     );
-}
+};
 
 export default NavBar

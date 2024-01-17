@@ -37,27 +37,20 @@ const pokemonList = [
 
 function App() {
 
-  let [pokemonIndex, setPokemonIndex] = useState(0);
+  let [currentPokemon, setPokemonIndex] = useState(pokemonList[0]);
 
-  let clickIncr = () => {
-    if (pokemonIndex < pokemonList.length - 1) {
-      setPokemonIndex(pokemonIndex + 1)
-    }
+  let pokemonClickHandler = (pokemon) => {
+    setPokemonIndex(pokemon)
   }
 
-  let clickDecr = () => {
-    if (pokemonIndex > 0) {
-      setPokemonIndex(pokemonIndex - 1)
-    }
-  }
-
-  let pokemon = pokemonList[pokemonIndex]
 
   return (
+
     <div>
-      <PokemonCard pokemon={pokemon} />
-      <NavBar functionMore={clickIncr} functionLess={clickDecr} />
+      <PokemonCard pokemon={currentPokemon} />
+      <NavBar pokemons={pokemonList} onPokemonClick={pokemonClickHandler} />
     </div>
+
   );
 
 }
